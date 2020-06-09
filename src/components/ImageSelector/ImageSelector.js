@@ -11,8 +11,7 @@ const imageSelector = (props) => {
          onClick={props.onCardClick}>
       <Card source={image.imageName}
             caption={image.imageCaption}
-            isSelected={image.isSelected}>
-      </Card>
+            isSelected={image.isSelected}/>
     </div>
   );
 
