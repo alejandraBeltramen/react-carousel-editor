@@ -1,0 +1,27 @@
+/* Base Colors */
+// TODO define a color palette here
+
+/* Font colors */
+$font-color-dark: #222222;
+$font-color-light: #ffffff;
+$font-color-grey: #444444;
+$font-color-light-grey: #666666;
+
+/* Dropdown */
+$dropdown-title-font-color: $font-color-dark;
+$dropdown-list-border-color: #e0e0e0;
+$dropdown-list-background-color: #ffffff;
+$dropdown-list-font-color: $font-color-grey;
+
+/* Button */
+$button-background-color: #000000;
+$button-font-color: $font-color-light;
+
+/* Others */
+// TODO remove them
+$title-divisor: #f7f7f7;
+$dots-carousel-background-color: #cccccc;
+$dots-carousel-background-color-selected: #444444;
+$thumbnail-carousel-border-color-selected: #888888;
+$carousel-nav-color-buttons: $font-color-light;
+$carousel-nav-disabled-color-button: $font-color-grey;
