@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import Carousel from './ui-core/Carousel/Carousel';
 import ImageSelector from './components/ImageSelector/ImageSelector';
+import ImageViewer from './components/ImageViewer/ImagerViewer';
 
 function App() {
   const images = [
@@ -22,11 +23,17 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <ImageSelector images={images} onCardClick={onNextClick}/>
-    </div>
+
+    /**Image Viewer */
+    <ImageViewer image={images[0]}/>
+
+    /** Image Selector */
+    // <div className="App">
+    //   <ImageSelector images={images} onCardClick={onNextClick}/>
+    // </div>
 
 
+    /** Carousel */
     // <div className="App">
     //   <div className="container">
     //     <Carousel onPreviousClick={onPreviousClick}
