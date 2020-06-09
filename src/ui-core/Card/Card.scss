@@ -1,0 +1,15 @@
+.uc-card{
+  position: relative;
+  text-align: center;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .caption-inside {
+    width: 100%;
+    position: absolute;
+    top: 85%;
+  }
+}
