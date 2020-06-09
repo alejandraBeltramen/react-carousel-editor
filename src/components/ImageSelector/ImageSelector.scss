@@ -1,0 +1,15 @@
+.image-selector {
+  .is__container {
+    width: 90%;
+    max-height: 270px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+
+    .is_container__card {
+      width: 100px;
+      height: 100px;
+      margin: 5px;
+      display: inline-block;
+    }
+  }
+}

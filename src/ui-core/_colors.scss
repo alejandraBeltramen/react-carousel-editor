@@ -17,11 +17,16 @@ $dropdown-list-font-color: $font-color-grey;
 $button-background-color: #000000;
 $button-font-color: $font-color-light;
 
+/* Carousel */
+$carousel-nav-color-buttons: $font-color-light;
+$carousel-nav-disabled-color-button: $font-color-grey;
+
+/* Card */
+$selected-card-border-color: #0088cc;
+
 /* Others */
 // TODO remove them
 $title-divisor: #f7f7f7;
 $dots-carousel-background-color: #cccccc;
 $dots-carousel-background-color-selected: #444444;
 $thumbnail-carousel-border-color-selected: #888888;
-$carousel-nav-color-buttons: $font-color-light;
-$carousel-nav-disabled-color-button: $font-color-grey;
