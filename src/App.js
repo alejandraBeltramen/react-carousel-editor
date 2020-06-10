@@ -13,15 +13,7 @@ function App() {
     { imageName: "./images/listeningBell.jpg", imageCaption: "Bell", isSelected: true },
     { imageName: "./images/listeningCap.jpg", imageCaption: "Cap", isSelected: false },
   ];
-
-  const onPreviousClick = () => {
-    console.log('click');
-  };
-
-  const onNextClick = () => {
-    console.log('enabled');
-  };
-
+  
   return (
     /** Carousel Manager */
     <CarouselManager images={images}
