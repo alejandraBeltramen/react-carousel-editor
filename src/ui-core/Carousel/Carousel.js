@@ -25,7 +25,9 @@ const Carousel = (props) => {
          key={index}>
       <Card source={image.imageName}
             caption={image.imageCaption}
-            captionInside>
+            isCaptionVisible={props.isCaptionVisible}
+            isCaptionInside
+            onImageClick={() => props.onImageClick(image)}>
       </Card>
     </div>
   );

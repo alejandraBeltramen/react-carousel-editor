@@ -27,7 +27,11 @@ const CarouselManager = (props) => {
       </div>
 
       <div className="cm-carousel">
-        <Carousel images={props.images} itemsToDisplay={imagesPerTime}/>
+        <Carousel images={props.images}
+                  itemsToDisplay={imagesPerTime}
+                  isCaptionVisible={!isEditMode}
+                  onImageClick={(clickedImage) => console.log('clicked image: ', clickedImage)}
+                  isCaptionInside/>
       </div>
     </div>
   );
