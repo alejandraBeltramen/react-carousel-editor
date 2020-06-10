@@ -1,0 +1,11 @@
+.carousel-manager {
+  .cm-actions {
+    display: flex;
+    position: relative;
+
+    Button {
+      position: absolute;
+      right: 0;
+    }
+  }
+}

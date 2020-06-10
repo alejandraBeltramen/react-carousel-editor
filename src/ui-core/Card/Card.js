@@ -3,17 +3,28 @@ import './Card.scss';
 
 const card = (props) => {
   let captionClasses = 'uc-card__caption';
-  captionClasses = props.captionInside ? `${captionClasses} caption-inside` : captionClasses;
-
   let imageClasses = 'uc-card__image';
+
+  captionClasses = props.isCaptionInside ? `${captionClasses} caption-inside` : captionClasses;
   imageClasses = props.isSelected ? `${imageClasses} image-selected` : imageClasses;
 
-  return (
-    <div className="uc-card">
-      <img className={imageClasses} src={props.source} alt={props.caption}></img>
+  const caption = props.isCaptionVisible ? (
       <div className={captionClasses}>
         <label> { props.caption } </label>
       </div>
+    ) : null;
+
+  const cardContent = props.source ? (
+      <img className={imageClasses}
+           src={props.source}
+           alt={props.caption}
+           onClick={props.onImageClick}/>
+    ) : null;
+
+  return (
+    <div className="uc-card">
+      { cardContent }
+      { caption }
     </div>
   );
 };

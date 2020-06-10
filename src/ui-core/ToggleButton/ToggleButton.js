@@ -1,5 +1,5 @@
 import React from 'react';
-import './Toggle-button.scss';
+import './ToggleButton.scss';
 
 const toggleButton = (props) => (
   <div className="uc-toggle">

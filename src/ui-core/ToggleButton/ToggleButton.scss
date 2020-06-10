@@ -1,7 +1,10 @@
 .uc-toggle {
+  margin: 5px;
+  
   &-title {
     display: inline-block;
-    vertical-align: -webkit-baseline-middle;  
+    vertical-align: -webkit-baseline-middle;
+    min-width: 90px;
   }
 
   &-label {
