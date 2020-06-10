@@ -8,21 +8,22 @@ const card = (props) => {
   captionClasses = props.isCaptionInside ? `${captionClasses} caption-inside` : captionClasses;
   imageClasses = props.isSelected ? `${imageClasses} image-selected` : imageClasses;
 
-  let caption = null;
-  if(props.isCaptionVisible) {
-    caption = (
+  const caption = props.isCaptionVisible ? (
       <div className={captionClasses}>
         <label> { props.caption } </label>
       </div>
-    );
-  }
+    ) : null;
 
-  return (
-    <div className="uc-card">
+  const cardContent = props.source ? (
       <img className={imageClasses}
            src={props.source}
            alt={props.caption}
-           onClick={props.onImageClick}></img>
+           onClick={props.onImageClick}/>
+    ) : null;
+
+  return (
+    <div className="uc-card">
+      { cardContent }
       { caption }
     </div>
   );
