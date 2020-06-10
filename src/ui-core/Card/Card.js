@@ -19,7 +19,9 @@ const card = (props) => {
            src={props.source}
            alt={props.caption}
            onClick={props.onImageClick}/>
-    ) : null;
+    ) : (
+      <div className="uc-card__empty"></div>
+    );
 
   return (
     <div className="uc-card">

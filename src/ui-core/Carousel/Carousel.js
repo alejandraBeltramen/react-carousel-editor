@@ -30,10 +30,17 @@ const Carousel = (props) => {
       }
       imagesPerPage[Math.floor(index/props.itemsToDisplay)].push(image);
     });
-    if(props.images.length % props.itemsToDisplay !== 0) {
+
+    if(props.images.length % props.itemsToDisplay !== 0 || props.images.length === 0) {
       const amountOfEmptyImages = props.itemsToDisplay - (props.images.length % props.itemsToDisplay);
+      const index = props.images.length === 0 ? 0 : imagesPerPage.length-1;
+
+      if(props.images.length === 0) {
+        imagesPerPage.push([]);
+      }
+
       for(let i = 0; i<amountOfEmptyImages; i++) {
-        imagesPerPage[imagesPerPage.length-1].push({});
+        imagesPerPage[index].push({});
       }
     }
   }

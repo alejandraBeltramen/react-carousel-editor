@@ -7,11 +7,11 @@ const ADD = 'Add';
 const imageSelector = (props) => {
   const imagesToRender = props.images.map((image, index) => 
     <div className="is_container__card"
-         key={index}
-         onClick={props.onCardClick}>
+         key={index}>
       <Card source={image.imageName}
             caption={image.imageCaption}
-            isSelected={image.isSelected}/>
+            isSelected={image.isSelected}
+            onImageClick={() => props.onImageClick(image)}/>
     </div>
   );
 
@@ -21,7 +21,7 @@ const imageSelector = (props) => {
         { imagesToRender }
       </div>
 
-    <Button onClick={props.onAddClick}>{ ADD }</Button>
+    <Button onClick={props.onAddClick} isDisabled={props.isAddDisabled}>{ ADD }</Button>
     </div>
   );
 };
