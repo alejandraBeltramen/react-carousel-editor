@@ -12,7 +12,6 @@ function App() {
     { imageName: "./images/listen-v02.jpg", imageCaption: "Girl", isSelected: false },
     { imageName: "./images/listeningBell.jpg", imageCaption: "Bell", isSelected: true },
     { imageName: "./images/listeningCap.jpg", imageCaption: "Cap", isSelected: false },
-    { imageName: "./images/listeningCup.jpg", imageCaption: "Cup", isSelected: false }
   ];
 
   const onPreviousClick = () => {
