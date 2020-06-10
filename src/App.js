@@ -3,6 +3,7 @@ import './App.scss';
 import Carousel from './ui-core/Carousel/Carousel';
 import ImageSelector from './components/ImageSelector/ImageSelector';
 import ImageViewer from './components/ImageViewer/ImagerViewer';
+import CarouselManager from './components/CarouselManager/CarouselManager';
 
 function App() {
   const images = [
@@ -23,9 +24,11 @@ function App() {
   };
 
   return (
+    /** Carousel Manager */
+    <CarouselManager images={images}/>
 
     /**Image Viewer */
-    <ImageViewer image={images[0]}/>
+    // <ImageViewer image={images[0]}/>
 
     /** Image Selector */
     // <div className="App">
