@@ -24,7 +24,10 @@ function App() {
 
   return (
     /** Carousel Manager */
-    <CarouselManager images={images}/>
+    <CarouselManager images={images}
+                     onRemoveImages={() => console.log('on remove button click')}
+                     isRemoveDisabled={false}
+                     onImageClick={(clickedImage) => console.log('Clicked Image: ', clickedImage) }/>
 
     /**Image Viewer */
     // <ImageViewer image={images[0]}/>

@@ -23,14 +23,14 @@ const CarouselManager = (props) => {
         </ToggleButton>
 
         <Dropdown items={IMAGES_PER_TIME} onChange={(amount) => setImagesPerTime(amount)}/>
-        <Button onClick={() => console.log('click')}>{ REMOVE }</Button>
+        <Button onClick={props.onRemoveImages} isDisabled={props.isRemoveDisabled}>{ REMOVE }</Button>
       </div>
 
       <div className="cm-carousel">
         <Carousel images={props.images}
                   itemsToDisplay={imagesPerTime}
                   isCaptionVisible={!isEditMode}
-                  onImageClick={(clickedImage) => console.log('clicked image: ', clickedImage)}
+                  onImageClick={(clickedImage) => props.onImageClick(clickedImage)}
                   isCaptionInside/>
       </div>
     </div>
