@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ImageSelector.scss';
 import Card from '../../ui-core/Card/Card';
 import Button from '../../ui-core/Button/Button';
@@ -6,24 +6,16 @@ import Button from '../../ui-core/Button/Button';
 const ADD = 'Add';
 
 const ImageSelector = (props) => {
-  const [ images, setImages ] = useState(props.images);
+  const [ images, setImages ] = useState([]);
   const [ selectedAmount, setSelectedAmount ] = useState(0);
 
-  const imageClickHandler = (clickedImage) => {
-    updateSelectedValue(clickedImage);
-    updateSelectedAmount(clickedImage);
-  }
+  useEffect(() => {
+    setImages(props.images);
+  }, [props.images]);
 
-  const updateSelectedValue = (imageToUpdate) => {
-    // const newImages = [...images];
-    // console.log('Image: ', imageToUpdate);
-    // newImages.forEach((image) => {
-    //   if(image.id === imageToUpdate.id) {
-    //     image.isSelected = !image.isSelected;
-    //   }
-    // });
-    // setImages(newImages);
-    imageToUpdate.isSelected = !imageToUpdate.isSelected;
+  const imageClickHandler = (clickedImage) => {
+    clickedImage.isSelected = !clickedImage.isSelected;
+    updateSelectedAmount(clickedImage);
   }
 
   const updateSelectedAmount = (image) => {
@@ -41,6 +33,7 @@ const ImageSelector = (props) => {
       image.isSelected ? imagesToAdd.push(image) : imagesToRemain.push(image);
     });
     setImages(imagesToRemain);
+    setSelectedAmount(0);
 
     return props.onAddImages(imagesToAdd);
   }
@@ -58,11 +51,13 @@ const ImageSelector = (props) => {
 
   return (
     <div className="image-selector">
+      <div className="is__title">Image Selector</div>
+      <div className="is__actions">
+        <Button onClick={addHandler} isDisabled={selectedAmount === 0}>{ ADD }</Button>
+      </div>
       <div className="is__container">
         { imagesToRender }
       </div>
-
-    <Button onClick={addHandler} isDisabled={selectedAmount === 0}>{ ADD }</Button>
     </div>
   );
 };

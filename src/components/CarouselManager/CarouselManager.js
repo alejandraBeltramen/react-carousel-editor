@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CarouselManager.scss';
 import Button from '../../ui-core/Button/Button';
 import Carousel from '../../ui-core/Carousel/Carousel';
@@ -14,26 +14,19 @@ const CarouselManager = (props) => {
   const [ isEditMode, setIsEditMode ] = useState(false);
   const [ imagesPerTime, setImagesPerTime ] = useState(2);
   const [ selectedAmount, setSelectedAmount ] = useState(0);
-  const [ images, setImages ] = useState(props.images);
+  const [ images, setImages ] = useState([]);
+
+  useEffect(() => {
+    setImages(props.images);
+  }, [props.images]);
 
   const imageClickHandler = (clickedImage) => {
     if(!isEditMode) {
       return props.onImageClick(clickedImage);
     }
 
-    updateSelectedValue(clickedImage);
+    clickedImage.isSelected = !clickedImage.isSelected;
     updateSelectedAmount(clickedImage);
-  }
-
-  const updateSelectedValue = (imageToUpdate) => {
-    // const newImages = [...images];
-    // newImages.forEach((image) => {
-    //   if(image.id === imageToUpdate.id) {
-    //     image.isSelected = !image.isSelected;
-    //   }
-    // });
-    // setImages(newImages);
-    imageToUpdate.isSelected = !imageToUpdate.isSelected;
   }
 
   const updateSelectedAmount = (image) => {
@@ -51,6 +44,7 @@ const CarouselManager = (props) => {
       image.isSelected ? imagesToRemove.push(image) : imagesToRemain.push(image);
     });
     setImages(imagesToRemain);
+    setSelectedAmount(0);
 
     return props.onRemoveImages(imagesToRemove);
   }
@@ -67,7 +61,8 @@ const CarouselManager = (props) => {
 
   return (
     <div className="carousel-manager">
-      <div className="cm-actions">
+      <div className="cm__title">Carousel</div>
+      <div className="cm__actions">
         <ToggleButton onToggleClick={toggleModeHandler}>
           { isEditMode ? EDIT_MODE : VIEW_MODE }
         </ToggleButton>
@@ -76,7 +71,7 @@ const CarouselManager = (props) => {
         <Button onClick={removeHandler} isDisabled={!isEditMode || selectedAmount === 0}>{ REMOVE }</Button>
       </div>
 
-      <div className="cm-carousel">
+      <div className="cm__carousel">
         <Carousel images={images}
                   itemsToDisplay={imagesPerTime}
                   isCaptionVisible={!isEditMode}

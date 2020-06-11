@@ -1,11 +1,31 @@
+@import '../../ui-core/colors';
+
 .carousel-manager {
-  .cm-actions {
+  border: 1px solid $section-border-color;
+  padding: 15px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+
+  .cm__title {
+    font-size: 20px;
+    text-align: center;
+    
+  }
+
+  .cm__actions {
     display: flex;
     position: relative;
+    margin-bottom: 20px;
 
     Button {
       position: absolute;
       right: 0;
     }
+  }
+
+  .cm__carousel {
+    background-color: $carousel-background-color;
+    padding: 30px 80px 30px 80px;
+    border-radius: 2px;
   }
 }
