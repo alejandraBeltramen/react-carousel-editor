@@ -5,7 +5,9 @@ import Carousel from '../../ui-core/Carousel/Carousel';
 import ToggleButton from '../../ui-core/ToggleButton/ToggleButton';
 import Dropdown from '../../ui-core/Dropdown/Dropdown';
 import { sortArrayBy } from '../../utils/common';
+import Section from '../../ui-core/Section/Section';
 
+const CAROUSEL = 'Carousel';
 const REMOVE = 'Remove';
 const EDIT_MODE = 'Edit Mode';
 const VIEW_MODE = 'View Mode';
@@ -60,29 +62,37 @@ const CarouselManager = (props) => {
     setSelectedAmount(0);
   }
 
+  const actions = (
+    <>
+      <ToggleButton onToggleClick={toggleModeHandler}>
+        { isEditMode ? EDIT_MODE : VIEW_MODE }
+      </ToggleButton>
+
+      <Dropdown items={IMAGES_PER_TIME} onChange={(amount) => setImagesPerTime(amount)}/>
+
+      { 
+        isEditMode ?
+          <Button onClick={removeHandler} isDisabled={selectedAmount === 0}>{ REMOVE }</Button> :
+          null
+      }
+    </>
+  );
+
+  const body = (
+    <div className="cm__carousel">
+      <Carousel images={images}
+                itemsToDisplay={imagesPerTime}
+                isCaptionVisible={!isEditMode}
+                onImageClick={(clickedImage) => imageClickHandler(clickedImage)}
+                isCaptionInside/>
+    </div>
+  );
+
   return (
     <div className="carousel-manager">
-      <div className="cm__title">Carousel</div>
-      <div className="cm__actions">
-        <ToggleButton onToggleClick={toggleModeHandler}>
-          { isEditMode ? EDIT_MODE : VIEW_MODE }
-        </ToggleButton>
-
-        <Dropdown items={IMAGES_PER_TIME} onChange={(amount) => setImagesPerTime(amount)}/>
-
-        { isEditMode ?
-            <Button onClick={removeHandler} isDisabled={selectedAmount === 0}>{ REMOVE }</Button> :
-            null
-        }
-      </div>
-
-      <div className="cm__carousel">
-        <Carousel images={images}
-                  itemsToDisplay={imagesPerTime}
-                  isCaptionVisible={!isEditMode}
-                  onImageClick={(clickedImage) => imageClickHandler(clickedImage)}
-                  isCaptionInside/>
-      </div>
+      <Section title={CAROUSEL}
+               actions={actions}
+               body={body}/>
     </div>
   );
 };

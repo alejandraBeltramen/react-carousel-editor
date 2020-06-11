@@ -1,0 +1,26 @@
+@import '../colors';
+
+.uc-section {
+  border: 1px solid $section-border-color;
+  padding: 15px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  min-width: 530px;
+
+  &__title {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  &__actions {
+    display: flex;
+    position: relative;
+    margin-bottom: 20px;
+
+    Button {
+      position: absolute;
+      right: 0;
+    }
+  }
+}

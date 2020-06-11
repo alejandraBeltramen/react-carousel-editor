@@ -1,16 +1,6 @@
 @import '../../ui-core/colors';
 
 .image-selector {
-  margin-bottom: 10px;
-  border: 1px solid $section-border-color;
-  padding: 15px;
-  border-radius: 2px;
-
-  .is__title {
-    font-size: 20px;
-    text-align: center;
-  }
-
   .is__container {
     width: 100%;
     overflow: auto;
@@ -25,14 +15,6 @@
   }
 
   .is__actions {
-    display: flex;
-    position: relative;
     height: 44px;
-
-    Button {
-      position: absolute;
-      right: 0;
-    }
   }
-  
 }

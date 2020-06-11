@@ -3,7 +3,9 @@ import './ImageSelector.scss';
 import Card from '../../ui-core/Card/Card';
 import Button from '../../ui-core/Button/Button';
 import { sortArrayBy } from '../../utils/common';
+import Section from '../../ui-core/Section/Section';
 
+const IMAGE_SELECTOR = 'Image Selector';
 const ADD = 'Add';
 
 const ImageSelector = (props) => {
@@ -50,15 +52,23 @@ const ImageSelector = (props) => {
     </div>
   );
 
+  const actions = (
+    <div className="is__actions">
+      <Button onClick={addHandler} isDisabled={selectedAmount === 0}>{ ADD }</Button>
+    </div>
+  );
+
+  const body = (
+    <div className="is__container">
+      { imagesToRender }
+    </div>
+  );
+
   return (
     <div className="image-selector">
-      <div className="is__title">Image Selector</div>
-      <div className="is__actions">
-        <Button onClick={addHandler} isDisabled={selectedAmount === 0}>{ ADD }</Button>
-      </div>
-      <div className="is__container">
-        { imagesToRender }
-      </div>
+      <Section title={IMAGE_SELECTOR}
+               actions={actions}
+               body={body}/>
     </div>
   );
 };
