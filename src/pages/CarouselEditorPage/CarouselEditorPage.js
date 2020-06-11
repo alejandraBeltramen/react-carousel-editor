@@ -26,16 +26,18 @@ const CarouselEditorPage = () => {
     setImageToView(clickedImage);
   };
 
-  const removeImagesHandler = (removedImages) => {
+  const removeImagesHandler = (removedImages, remainingImages) => {
     console.log('Removed images: ', removedImages);
     resetSelectedState(removedImages);
     setSelectorImages([...selectorImages, ...removedImages]);
+    setCarouselImages(remainingImages);
   };
 
-  const addImagesHandler = (addedImages) => {
+  const addImagesHandler = (addedImages, remainingImages) => {
     console.log('Added images: ', addedImages);
     resetSelectedState(addedImages);
     setCarouselImages([...carouselImages, ...addedImages]);
+    setSelectorImages(remainingImages);
   }
 
   const resetSelectedState = (imagesToReset) => {
@@ -45,9 +47,9 @@ const CarouselEditorPage = () => {
   return (
     <div className="carousel-editor-page">
       <ImageSelector images={selectorImages}
-                     onAddImages={(addedImages) => addImagesHandler(addedImages)}/>
+                     onAddImages={(addedImages, remainingImages) => addImagesHandler(addedImages, remainingImages)}/>
       <CarouselManager images={carouselImages}
-                       onRemoveImages={(removedImages) => removeImagesHandler(removedImages)}
+                       onRemoveImages={(removedImages, remainingImages) => removeImagesHandler(removedImages, remainingImages)}
                        onImageClick={(image) => carouselImageClickHandler(image)}/>
       <ImageViewer image={imageToView}/>
       

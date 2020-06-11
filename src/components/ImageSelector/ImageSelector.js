@@ -36,7 +36,7 @@ const ImageSelector = (props) => {
     setImages(imagesToRemain);
     setSelectedAmount(0);
 
-    return props.onAddImages(imagesToAdd);
+    return props.onAddImages(imagesToAdd, imagesToRemain);
   }
 
   const imagesToRender = images.map((image, index) => 

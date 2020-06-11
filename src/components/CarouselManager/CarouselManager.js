@@ -47,7 +47,7 @@ const CarouselManager = (props) => {
     setImages(imagesToRemain);
     setSelectedAmount(0);
 
-    return props.onRemoveImages(imagesToRemove);
+    return props.onRemoveImages(imagesToRemove, imagesToRemain);
   }
 
   const toggleModeHandler = () => {
