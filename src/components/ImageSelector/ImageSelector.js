@@ -4,16 +4,16 @@ import Card from '../../ui-core/Card/Card';
 import Button from '../../ui-core/Button/Button';
 import { sortArrayBy } from '../../utils/common';
 import Section from '../../ui-core/Section/Section';
+import { IMAGE_SELECTOR, ADD } from '../../localization/english';
 
-const IMAGE_SELECTOR = 'Image Selector';
-const ADD = 'Add';
+const IMAGE_CAPTION_PROPERTY = 'imageCaption';
 
 const ImageSelector = (props) => {
   const [ images, setImages ] = useState([]);
   const [ selectedAmount, setSelectedAmount ] = useState(0);
 
   useEffect(() => {
-    setImages(sortArrayBy(props.images, 'imageCaption'));
+    setImages(sortArrayBy(props.images, IMAGE_CAPTION_PROPERTY));
   }, [props.images]);
 
   const imageClickHandler = (clickedImage) => {

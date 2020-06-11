@@ -2,14 +2,13 @@ import React from 'react';
 import './ImageViewer.scss';
 import Card from '../../ui-core/Card/Card';
 import Section from '../../ui-core/Section/Section';
-
-const IMAGE_VIEWER = 'Image Viewer';
-const NO_IMAGE_SELECTED = 'No image selected';
+import { IMAGE_VIEWER, NO_IMAGE_SELECTED } from '../../localization/english';
 
 const imageViewer = (props) => {
   const body = (
     <div className="iv__content">
-      { props.image.imageName ? 
+      { 
+        props.image.imageName ?
           <Card source={props.image.imageName}
                 caption={props.image.imageCaption}
                 isCaptionVisible/> :

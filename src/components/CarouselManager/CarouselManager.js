@@ -6,12 +6,10 @@ import ToggleButton from '../../ui-core/ToggleButton/ToggleButton';
 import Dropdown from '../../ui-core/Dropdown/Dropdown';
 import { sortArrayBy } from '../../utils/common';
 import Section from '../../ui-core/Section/Section';
+import { CAROUSEL, REMOVE, EDIT_MODE, VIEW_MODE } from '../../localization/english';
 
-const CAROUSEL = 'Carousel';
-const REMOVE = 'Remove';
-const EDIT_MODE = 'Edit Mode';
-const VIEW_MODE = 'View Mode';
 const IMAGES_PER_TIME = [ 2, 3, 4, 5 ];
+const IMAGE_CAPTION_PROPERTY = 'imageCaption';
 
 const CarouselManager = (props) => {
   const [ isEditMode, setIsEditMode ] = useState(false);
@@ -20,7 +18,7 @@ const CarouselManager = (props) => {
   const [ images, setImages ] = useState([]);
 
   useEffect(() => {
-    setImages(sortArrayBy(props.images, 'imageCaption'));
+    setImages(sortArrayBy(props.images, IMAGE_CAPTION_PROPERTY));
   }, [props.images]);
   
   const imageClickHandler = (clickedImage) => {

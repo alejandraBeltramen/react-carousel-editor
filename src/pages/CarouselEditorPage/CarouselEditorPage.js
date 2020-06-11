@@ -4,9 +4,9 @@ import CarouselManager from '../../components/CarouselManager/CarouselManager';
 import ImageSelector from '../../components/ImageSelector/ImageSelector';
 import ImageViewer from '../../components/ImageViewer/ImagerViewer';
 import data from '../../data/carouselImages.json';
+import { CAROUSEL_EDITOR } from '../../localization/english';
 
 const IMAGES_PATH = './images';
-const CAROUSEL_EDITOR = 'Carousel Editor';
 
 const CarouselEditorPage = () => {
   const [ carouselImages, setCarouselImages ] = useState([]);
