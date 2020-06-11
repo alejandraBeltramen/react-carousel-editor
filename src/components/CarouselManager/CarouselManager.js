@@ -4,6 +4,7 @@ import Button from '../../ui-core/Button/Button';
 import Carousel from '../../ui-core/Carousel/Carousel';
 import ToggleButton from '../../ui-core/ToggleButton/ToggleButton';
 import Dropdown from '../../ui-core/Dropdown/Dropdown';
+import { sortArrayBy } from '../../utils/common';
 
 const REMOVE = 'Remove';
 const EDIT_MODE = 'Edit Mode';
@@ -17,9 +18,9 @@ const CarouselManager = (props) => {
   const [ images, setImages ] = useState([]);
 
   useEffect(() => {
-    setImages(props.images);
+    setImages(sortArrayBy(props.images, 'imageCaption'));
   }, [props.images]);
-
+  
   const imageClickHandler = (clickedImage) => {
     if(!isEditMode) {
       return props.onImageClick(clickedImage);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ImageSelector.scss';
 import Card from '../../ui-core/Card/Card';
 import Button from '../../ui-core/Button/Button';
+import { sortArrayBy } from '../../utils/common';
 
 const ADD = 'Add';
 
@@ -10,7 +11,7 @@ const ImageSelector = (props) => {
   const [ selectedAmount, setSelectedAmount ] = useState(0);
 
   useEffect(() => {
-    setImages(props.images);
+    setImages(sortArrayBy(props.images, 'imageCaption'));
   }, [props.images]);
 
   const imageClickHandler = (clickedImage) => {
