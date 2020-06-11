@@ -22,19 +22,24 @@ const CarouselEditorPage = () => {
   }, []);
 
   const carouselImageClickHandler = (clickedImage) => {
-    console.log('image to view: ', clickedImage);
     setImageToView(clickedImage);
   };
 
   const removeImagesHandler = (removedImages, remainingImages) => {
-    console.log('Removed images: ', removedImages);
     resetSelectedState(removedImages);
     setSelectorImages([...selectorImages, ...removedImages]);
     setCarouselImages(remainingImages);
+    validateImageOnImageViewer(removedImages);
   };
 
+  const validateImageOnImageViewer = (removedImages) => {
+    const imageWillBeRemoved = removedImages.find(image => image.imageName === imageToView.imageName);
+    if(!!imageWillBeRemoved) {
+      setImageToView({});
+    }
+  }
+
   const addImagesHandler = (addedImages, remainingImages) => {
-    console.log('Added images: ', addedImages);
     resetSelectedState(addedImages);
     setCarouselImages([...carouselImages, ...addedImages]);
     setSelectorImages(remainingImages);
