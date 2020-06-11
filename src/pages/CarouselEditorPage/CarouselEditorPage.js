@@ -7,13 +7,10 @@ import data from '../../data/carouselImages.json';
 import { CAROUSEL_EDITOR } from '../../localization/english';
 import { IMAGES_PATH } from '../../constants/CarouselEditorConstants';
 
-const NO_IMAGES = [];
-const NO_IMAGE = {};
-
 const CarouselEditorPage = () => {
-  const [ carouselImages, setCarouselImages ] = useState(NO_IMAGES);
-  const [ selectorImages, setSelectorImages ] = useState(NO_IMAGES);
-  const [ imageToView, setImageToView ] = useState(NO_IMAGE);
+  const [ carouselImages, setCarouselImages ] = useState([]);
+  const [ selectorImages, setSelectorImages ] = useState([]);
+  const [ imageToView, setImageToView ] = useState({});
 
   useEffect(() => {
     const result = data.carouselImages.map((rawImage) => ({
@@ -38,7 +35,7 @@ const CarouselEditorPage = () => {
   const validateImageOnImageViewer = (removedImages) => {
     const imageWillBeRemoved = removedImages.find(image => image.imageName === imageToView.imageName);
     if(!!imageWillBeRemoved) {
-      setImageToView(NO_IMAGE);
+      setImageToView({});
     }
   }
 

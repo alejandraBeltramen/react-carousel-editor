@@ -7,12 +7,9 @@ import Section from '../../ui-core/Section/Section';
 import { IMAGE_SELECTOR, ADD } from '../../localization/english';
 import { IMAGE_CAPTION_PROPERTY } from '../../constants/CarouselEditorConstants';
 
-const NO_IMAGES = [];
-const NO_SELECTED_IMAGES = 0;
-
 const ImageSelector = (props) => {
-  const [ images, setImages ] = useState(NO_IMAGES);
-  const [ selectedAmount, setSelectedAmount ] = useState(NO_SELECTED_IMAGES);
+  const [ images, setImages ] = useState([]);
+  const [ selectedAmount, setSelectedAmount ] = useState(0);
 
   useEffect(() => {
     setImages(sortArrayBy(props.images, IMAGE_CAPTION_PROPERTY));
@@ -32,13 +29,13 @@ const ImageSelector = (props) => {
   }
 
   const addHandler = () => {
-    const imagesToAdd = NO_IMAGES;
-    const imagesToRemain = NO_IMAGES;
+    const imagesToAdd = [];
+    const imagesToRemain = [];
     images.forEach((image) => {
       image.isSelected ? imagesToAdd.push(image) : imagesToRemain.push(image);
     });
     setImages(imagesToRemain);
-    setSelectedAmount(NO_SELECTED_IMAGES);
+    setSelectedAmount(0);
 
     return props.onAddImages(imagesToAdd, imagesToRemain);
   }
@@ -57,7 +54,7 @@ const ImageSelector = (props) => {
   const actions = (
     <div className="is__actions">
       <Button onClick={addHandler}
-              isDisabled={selectedAmount === NO_SELECTED_IMAGES}>
+              isDisabled={selectedAmount === 0}>
         { ADD }
       </Button>
     </div>
