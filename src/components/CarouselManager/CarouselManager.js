@@ -7,14 +7,19 @@ import Dropdown from '../../ui-core/Dropdown/Dropdown';
 import { sortArrayBy } from '../../utils/common';
 import Section from '../../ui-core/Section/Section';
 import { CAROUSEL, REMOVE, EDIT_MODE, VIEW_MODE } from '../../localization/english';
+import {
+  IMAGES_PER_TIME,
+  IMAGE_CAPTION_PROPERTY,
+  DEFAULT_IMAGES_PER_TIME,
+  DEFAULT_EDITION_MODE
+} from '../../constants/CarouselEditorConstants';
 
-const IMAGES_PER_TIME = [ 2, 3, 4, 5 ];
-const IMAGE_CAPTION_PROPERTY = 'imageCaption';
+const NO_SELECTED_IMAGES = 0;
 
 const CarouselManager = (props) => {
-  const [ isEditMode, setIsEditMode ] = useState(false);
-  const [ imagesPerTime, setImagesPerTime ] = useState(2);
-  const [ selectedAmount, setSelectedAmount ] = useState(0);
+  const [ isEditMode, setIsEditMode ] = useState(DEFAULT_EDITION_MODE);
+  const [ imagesPerTime, setImagesPerTime ] = useState(DEFAULT_IMAGES_PER_TIME);
+  const [ selectedAmount, setSelectedAmount ] = useState(NO_SELECTED_IMAGES);
   const [ images, setImages ] = useState([]);
 
   useEffect(() => {
@@ -57,7 +62,7 @@ const CarouselManager = (props) => {
 
   const unselectImages = () => {
     images.forEach(image => image.isSelected = false);
-    setSelectedAmount(0);
+    setSelectedAmount(NO_SELECTED_IMAGES);
   }
 
   const actions = (
@@ -70,7 +75,10 @@ const CarouselManager = (props) => {
 
       { 
         isEditMode ?
-          <Button onClick={removeHandler} isDisabled={selectedAmount === 0}>{ REMOVE }</Button> :
+          <Button onClick={removeHandler}
+                  isDisabled={selectedAmount === NO_SELECTED_IMAGES}>
+            { REMOVE }
+          </Button> :
           null
       }
     </>

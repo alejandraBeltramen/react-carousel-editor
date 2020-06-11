@@ -5,13 +5,15 @@ import ImageSelector from '../../components/ImageSelector/ImageSelector';
 import ImageViewer from '../../components/ImageViewer/ImagerViewer';
 import data from '../../data/carouselImages.json';
 import { CAROUSEL_EDITOR } from '../../localization/english';
+import { IMAGES_PATH } from '../../constants/CarouselEditorConstants';
 
-const IMAGES_PATH = './images';
+const NO_IMAGES = [];
+const NO_IMAGE = {};
 
 const CarouselEditorPage = () => {
-  const [ carouselImages, setCarouselImages ] = useState([]);
-  const [ selectorImages, setSelectorImages ] = useState([]);
-  const [ imageToView, setImageToView ] = useState({});
+  const [ carouselImages, setCarouselImages ] = useState(NO_IMAGES);
+  const [ selectorImages, setSelectorImages ] = useState(NO_IMAGES);
+  const [ imageToView, setImageToView ] = useState(NO_IMAGE);
 
   useEffect(() => {
     const result = data.carouselImages.map((rawImage) => ({
@@ -36,7 +38,7 @@ const CarouselEditorPage = () => {
   const validateImageOnImageViewer = (removedImages) => {
     const imageWillBeRemoved = removedImages.find(image => image.imageName === imageToView.imageName);
     if(!!imageWillBeRemoved) {
-      setImageToView({});
+      setImageToView(NO_IMAGE);
     }
   }
 
@@ -59,7 +61,6 @@ const CarouselEditorPage = () => {
                        onRemoveImages={(removedImages, remainingImages) => removeImagesHandler(removedImages, remainingImages)}
                        onImageClick={(image) => carouselImageClickHandler(image)}/>
       <ImageViewer image={imageToView}/>
-      
     </div>
   );
 };

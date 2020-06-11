@@ -3,11 +3,12 @@ import './Carousel.scss';
 import Card from '../Card/Card';
 
 const FIRST_PAGE = 0;
+const NO_IMAGES = [];
 
 const Carousel = (props) => {
   const [ currentPage, setCurrentPage ] = useState(FIRST_PAGE);
   const [ prevItemsToDisplay, setPrevItemsToDisplay ] = useState(FIRST_PAGE);
-  const imagesPerPage = [];
+  const imagesPerPage = NO_IMAGES;
   const imageFlexWidth = `${100 / props.itemsToDisplay}%`;
   let prevButtonClass = 'uc-carousel__previous';
   let nextButtonClass = 'uc-carousel__next';

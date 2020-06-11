@@ -20,7 +20,7 @@ const imageViewer = (props) => {
   return (
     <div className="image-viewer">
       <Section title={IMAGE_VIEWER}
-              body={body}/>
+               body={body}/>
     </div>
   );
 };

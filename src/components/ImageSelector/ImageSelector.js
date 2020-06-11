@@ -5,12 +5,14 @@ import Button from '../../ui-core/Button/Button';
 import { sortArrayBy } from '../../utils/common';
 import Section from '../../ui-core/Section/Section';
 import { IMAGE_SELECTOR, ADD } from '../../localization/english';
+import { IMAGE_CAPTION_PROPERTY } from '../../constants/CarouselEditorConstants';
 
-const IMAGE_CAPTION_PROPERTY = 'imageCaption';
+const NO_IMAGES = [];
+const NO_SELECTED_IMAGES = 0;
 
 const ImageSelector = (props) => {
-  const [ images, setImages ] = useState([]);
-  const [ selectedAmount, setSelectedAmount ] = useState(0);
+  const [ images, setImages ] = useState(NO_IMAGES);
+  const [ selectedAmount, setSelectedAmount ] = useState(NO_SELECTED_IMAGES);
 
   useEffect(() => {
     setImages(sortArrayBy(props.images, IMAGE_CAPTION_PROPERTY));
@@ -30,13 +32,13 @@ const ImageSelector = (props) => {
   }
 
   const addHandler = () => {
-    const imagesToAdd = [];
-    const imagesToRemain = [];
+    const imagesToAdd = NO_IMAGES;
+    const imagesToRemain = NO_IMAGES;
     images.forEach((image) => {
       image.isSelected ? imagesToAdd.push(image) : imagesToRemain.push(image);
     });
     setImages(imagesToRemain);
-    setSelectedAmount(0);
+    setSelectedAmount(NO_SELECTED_IMAGES);
 
     return props.onAddImages(imagesToAdd, imagesToRemain);
   }
@@ -54,7 +56,10 @@ const ImageSelector = (props) => {
 
   const actions = (
     <div className="is__actions">
-      <Button onClick={addHandler} isDisabled={selectedAmount === 0}>{ ADD }</Button>
+      <Button onClick={addHandler}
+              isDisabled={selectedAmount === NO_SELECTED_IMAGES}>
+        { ADD }
+      </Button>
     </div>
   );
 

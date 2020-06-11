@@ -3,9 +3,7 @@ import './Dropdown.scss';
 
 const dropdown = (props) => {
   const renderOption = props.items.map((item, index) => (
-    <option key={index} className="uc-dd-list__item">
-      { item }
-    </option>
+    <option key={index} className="uc-dd-list__item">{ item }</option>
   ));
   
   return (
