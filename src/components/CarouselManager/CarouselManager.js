@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './CarouselManager.scss';
-import Card from '../../ui-core/Card/Card';
 import Button from '../../ui-core/Button/Button';
 import Carousel from '../../ui-core/Carousel/Carousel';
 import ToggleButton from '../../ui-core/ToggleButton/ToggleButton';
@@ -27,14 +26,14 @@ const CarouselManager = (props) => {
   }
 
   const updateSelectedValue = (imageToUpdate) => {
-    const newImages = [...images];
-    console.log('Image: ', imageToUpdate);
-    newImages.forEach((image) => {
-      if(image.id === imageToUpdate.id) {
-        image.isSelected = !image.isSelected;
-      }
-    });
-    setImages(newImages);
+    // const newImages = [...images];
+    // newImages.forEach((image) => {
+    //   if(image.id === imageToUpdate.id) {
+    //     image.isSelected = !image.isSelected;
+    //   }
+    // });
+    // setImages(newImages);
+    imageToUpdate.isSelected = !imageToUpdate.isSelected;
   }
 
   const updateSelectedAmount = (image) => {
