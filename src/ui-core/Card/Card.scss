@@ -9,10 +9,11 @@
     height: 100%;
     cursor: pointer;
     box-sizing: border-box;
+    border: 3px solid transparent;
   }
 
   &__image.image-selected {
-    border: solid 3px $selected-card-border-color;
+    border: solid 2px $selected-card-border-color;
   }
 
   &__empty {
