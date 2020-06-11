@@ -60,6 +60,8 @@ const Carousel = (props) => {
     </div>
   );
 
+  const dots = imagesPerPage.map(() => <div className="uc-dot"></div>);
+
   return (
     <div className="uc-carousel">
       <button className={prevButtonClass}
@@ -71,6 +73,7 @@ const Carousel = (props) => {
               onClick={() => setCurrentPage(currentPage+1)}
               disabled={currentPage === imagesPerPage.length-1}>
       </button>
+      <div className="uc-carousel__dots"> {dots} </div>
     </div>
   );
 };
