@@ -4,6 +4,13 @@
   position: relative;
   text-align: center;
 
+  &__caption {
+    label {
+      background-color: $label-card-background-color;
+      color: $label-card-font-color;
+    }
+  }
+
   &__image {
     width: 100%;
     height: 100%;
