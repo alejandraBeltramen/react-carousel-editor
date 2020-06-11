@@ -69,7 +69,11 @@ const CarouselManager = (props) => {
         </ToggleButton>
 
         <Dropdown items={IMAGES_PER_TIME} onChange={(amount) => setImagesPerTime(amount)}/>
-        <Button onClick={removeHandler} isDisabled={!isEditMode || selectedAmount === 0}>{ REMOVE }</Button>
+
+        { isEditMode ?
+            <Button onClick={removeHandler} isDisabled={selectedAmount === 0}>{ REMOVE }</Button> :
+            null
+        }
       </div>
 
       <div className="cm__carousel">
