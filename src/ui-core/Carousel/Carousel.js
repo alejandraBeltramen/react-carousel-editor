@@ -60,7 +60,7 @@ const Carousel = (props) => {
     </div>
   );
 
-  const dots = imagesPerPage.map(() => <div className="uc-dot"></div>);
+  const dots = imagesPerPage.map((img, index) => <div key={index} className="uc-dot"></div>);
 
   return (
     <div className="uc-carousel">
