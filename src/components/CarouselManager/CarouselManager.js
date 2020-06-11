@@ -14,23 +14,74 @@ const IMAGES_PER_TIME = [ 2, 3, 4, 5 ];
 const CarouselManager = (props) => {
   const [ isEditMode, setIsEditMode ] = useState(false);
   const [ imagesPerTime, setImagesPerTime ] = useState(2);
+  const [ selectedAmount, setSelectedAmount ] = useState(0);
+  const [ images, setImages ] = useState(props.images);
+
+  const imageClickHandler = (clickedImage) => {
+    if(!isEditMode) {
+      return props.onImageClick(clickedImage);
+    }
+
+    updateSelectedValue(clickedImage);
+    updateSelectedAmount(clickedImage);
+  }
+
+  const updateSelectedValue = (imageToUpdate) => {
+    const newImages = [...images];
+    console.log('Image: ', imageToUpdate);
+    newImages.forEach((image) => {
+      if(image.id === imageToUpdate.id) {
+        image.isSelected = !image.isSelected;
+      }
+    });
+    setImages(newImages);
+  }
+
+  const updateSelectedAmount = (image) => {
+    if(image.isSelected) {
+      setSelectedAmount(selectedAmount+1);
+    } else {
+      setSelectedAmount(selectedAmount-1);
+    }
+  }
+
+  const removeHandler = () => {
+    const imagesToRemove = [];
+    const imagesToRemain = [];
+    images.forEach((image) => {
+      image.isSelected ? imagesToRemove.push(image) : imagesToRemain.push(image);
+    });
+    setImages(imagesToRemain);
+
+    return props.onRemoveImages(imagesToRemove);
+  }
+
+  const toggleModeHandler = () => {
+    unselectImages();
+    setIsEditMode(!isEditMode);
+  }
+
+  const unselectImages = () => {
+    images.forEach(image => image.isSelected = false);
+    setSelectedAmount(0);
+  }
 
   return (
     <div className="carousel-manager">
       <div className="cm-actions">
-        <ToggleButton onToggleClick={() => setIsEditMode(!isEditMode)}>
+        <ToggleButton onToggleClick={toggleModeHandler}>
           { isEditMode ? EDIT_MODE : VIEW_MODE }
         </ToggleButton>
 
         <Dropdown items={IMAGES_PER_TIME} onChange={(amount) => setImagesPerTime(amount)}/>
-        <Button onClick={props.onRemoveImages} isDisabled={props.isRemoveDisabled}>{ REMOVE }</Button>
+        <Button onClick={removeHandler} isDisabled={!isEditMode || selectedAmount === 0}>{ REMOVE }</Button>
       </div>
 
       <div className="cm-carousel">
-        <Carousel images={props.images}
+        <Carousel images={images}
                   itemsToDisplay={imagesPerTime}
                   isCaptionVisible={!isEditMode}
-                  onImageClick={(clickedImage) => props.onImageClick(clickedImage)}
+                  onImageClick={(clickedImage) => imageClickHandler(clickedImage)}
                   isCaptionInside/>
       </div>
     </div>
