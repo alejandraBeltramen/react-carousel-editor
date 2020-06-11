@@ -6,6 +6,7 @@ import ImageViewer from '../../components/ImageViewer/ImagerViewer';
 import data from '../../data/carouselImages.json';
 
 const IMAGES_PATH = './images';
+const CAROUSEL_EDITOR = 'Carousel Editor';
 
 const CarouselEditorPage = () => {
   const [ carouselImages, setCarouselImages ] = useState([]);
@@ -51,6 +52,7 @@ const CarouselEditorPage = () => {
 
   return (
     <div className="carousel-editor-page">
+      <h1>{ CAROUSEL_EDITOR }</h1>
       <ImageSelector images={selectorImages}
                      onAddImages={(addedImages, remainingImages) => addImagesHandler(addedImages, remainingImages)}/>
       <CarouselManager images={carouselImages}
