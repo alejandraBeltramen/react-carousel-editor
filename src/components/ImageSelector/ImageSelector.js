@@ -15,9 +15,15 @@ const ImageSelector = (props) => {
     setImages(sortArrayBy(props.images, IMAGE_CAPTION_PROPERTY));
   }, [props.images]);
 
-  const imageClickHandler = (clickedImage) => {
-    clickedImage.isSelected = !clickedImage.isSelected;
+  const imageClickHandler = (clickedImage, index) => {
+    updateSelectedImage(clickedImage, index);
     updateSelectedAmount(clickedImage);
+  }
+
+  const updateSelectedImage = (clickedImage, index) => {
+    const updatedImages = [ ...images ];
+    updatedImages[index].isSelected = !clickedImage.isSelected;
+    setImages(updatedImages);
   }
 
   const updateSelectedAmount = (image) => {
@@ -44,7 +50,7 @@ const ImageSelector = (props) => {
       <Card source={image.imageName}
             caption={image.imageCaption}
             isSelected={image.isSelected}
-            onImageClick={() => imageClickHandler(image)}
+            onImageClick={() => imageClickHandler(image, index)}
             isCaptionVisible/>
     </div>
   );

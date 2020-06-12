@@ -24,13 +24,19 @@ const CarouselManager = (props) => {
     setImages(sortArrayBy(props.images, IMAGE_CAPTION_PROPERTY));
   }, [props.images]);
   
-  const imageClickHandler = (clickedImage) => {
+  const imageClickHandler = (clickedImage, index) => {
     if(!isEditMode) {
       return props.onImageClick(clickedImage);
     }
 
-    clickedImage.isSelected = !clickedImage.isSelected;
+    updateSelectedImage(clickedImage, index);
     updateSelectedAmount(clickedImage);
+  }
+
+  const updateSelectedImage = (clickedImage, index) => {
+    const updatedImages = [ ...images ];
+    updatedImages[index].isSelected = !clickedImage.isSelected;
+    setImages(updatedImages);
   }
 
   const updateSelectedAmount = (image) => {
@@ -83,7 +89,7 @@ const CarouselManager = (props) => {
       <Carousel images={images}
                 itemsToDisplay={imagesPerTime}
                 isCaptionVisible={!isEditMode}
-                onImageClick={(clickedImage) => imageClickHandler(clickedImage)}
+                onImageClick={(clickedImage, index) => imageClickHandler(clickedImage, index)}
                 isCaptionInside/>
     </div>
   );

@@ -45,20 +45,24 @@ const Carousel = (props) => {
     }
   }
 
-  const index =  currentPage > imagesPerPage.length-1 ? FIRST_PAGE : currentPage;
-  const imagesToRender = imagesPerPage[index].map((image, index) => 
-    <div className="uc-carousel-container__card"
-         style={{ flex: imageFlexWidth }}
-         key={index}>
-      <Card source={image.imageName}
-            caption={image.imageCaption}
-            isCaptionVisible={props.isCaptionVisible}
-            isCaptionInside
-            onImageClick={() => props.onImageClick(image)}
-            isSelected={image.isSelected}>
-      </Card>
-    </div>
-  );
+  const pageIndex =  currentPage > imagesPerPage.length-1 ? FIRST_PAGE : currentPage;
+  const imagesToRender = imagesPerPage[pageIndex].map((image, index) => {
+    const imageIndex = currentPage * props.itemsToDisplay + index;
+
+    return (
+      <div className="uc-carousel-container__card"
+          style={{ flex: imageFlexWidth }}
+          key={index}>
+        <Card source={image.imageName}
+              caption={image.imageCaption}
+              isCaptionVisible={props.isCaptionVisible}
+              isCaptionInside
+              onImageClick={() => props.onImageClick(image, imageIndex)}
+              isSelected={image.isSelected}>
+        </Card>
+      </div>
+    );
+  });
 
   const dots = imagesPerPage.map((img, index) => <div key={index} className="uc-dot"></div>);
 
