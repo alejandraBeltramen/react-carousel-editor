@@ -12,6 +12,10 @@ const CarouselEditorPage = () => {
   const [ selectorImages, setSelectorImages ] = useState([]);
   const [ imageToView, setImageToView ] = useState({});
 
+  /**
+   * On creation, will get and parse the data to be
+   * rendered
+   */
   useEffect(() => {
     const result = data.carouselImages.map((rawImage) => ({
       ...rawImage,
@@ -21,10 +25,19 @@ const CarouselEditorPage = () => {
     setSelectorImages(result);
   }, []);
 
+  /**
+   * Sets the clicked image in the Image Viewer
+   * @param {} clickedImage 
+   */
   const carouselImageClickHandler = (clickedImage) => {
     setImageToView(clickedImage);
   };
 
+  /**
+   * 
+   * @param {} removedImages 
+   * @param {} remainingImages 
+   */
   const removeImagesHandler = (removedImages, remainingImages) => {
     resetSelectedState(removedImages);
     setSelectorImages([...selectorImages, ...removedImages]);
@@ -32,9 +45,15 @@ const CarouselEditorPage = () => {
     validateImageOnImageViewer(removedImages);
   };
 
+  /**
+   * Verifies if the current image in the Image Viewer is being
+   * removed from the carousel, to remove it also from the
+   * Image Viewer
+   * @param {*} removedImages 
+   */
   const validateImageOnImageViewer = (removedImages) => {
-    const imageWillBeRemoved = removedImages.find(image => image.imageName === imageToView.imageName);
-    if(!!imageWillBeRemoved) {
+    const clearImageViewer = removedImages.find(image => image.imageName === imageToView.imageName);
+    if(!!clearImageViewer) {
       setImageToView({});
     }
   }

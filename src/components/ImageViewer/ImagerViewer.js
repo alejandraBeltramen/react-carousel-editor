@@ -8,11 +8,11 @@ const imageViewer = (props) => {
   const body = (
     <div className="iv__content">
       { 
-        props.image.imageName ?
-          <Card source={props.image.imageName}
-                caption={props.image.imageCaption}
-                isCaptionVisible/> :
-          NO_IMAGE_SELECTED
+        props.image.imageName
+          ? <Card source={props.image.imageName}
+                  caption={props.image.imageCaption}
+                  isCaptionVisible/>
+          : NO_IMAGE_SELECTED
       }
     </div>
   );

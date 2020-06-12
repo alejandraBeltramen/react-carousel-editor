@@ -21,11 +21,9 @@ const ImageSelector = (props) => {
   }
 
   const updateSelectedAmount = (image) => {
-    if(image.isSelected) {
-      setSelectedAmount(selectedAmount+1);
-    } else {
-      setSelectedAmount(selectedAmount-1);
-    }
+    image.isSelected 
+      ? setSelectedAmount(selectedAmount+1)
+      : setSelectedAmount(selectedAmount-1);
   }
 
   const addHandler = () => {

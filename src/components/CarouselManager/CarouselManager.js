@@ -14,12 +14,10 @@ import {
   DEFAULT_EDITION_MODE
 } from '../../constants/CarouselEditorConstants';
 
-const NO_SELECTED_IMAGES = 0;
-
 const CarouselManager = (props) => {
   const [ isEditMode, setIsEditMode ] = useState(DEFAULT_EDITION_MODE);
   const [ imagesPerTime, setImagesPerTime ] = useState(DEFAULT_IMAGES_PER_TIME);
-  const [ selectedAmount, setSelectedAmount ] = useState(NO_SELECTED_IMAGES);
+  const [ selectedAmount, setSelectedAmount ] = useState(0);
   const [ images, setImages ] = useState([]);
 
   useEffect(() => {
@@ -36,11 +34,9 @@ const CarouselManager = (props) => {
   }
 
   const updateSelectedAmount = (image) => {
-    if(image.isSelected) {
-      setSelectedAmount(selectedAmount+1);
-    } else {
-      setSelectedAmount(selectedAmount-1);
-    }
+    image.isSelected
+      ? setSelectedAmount(selectedAmount+1)
+      : setSelectedAmount(selectedAmount-1);
   }
 
   const removeHandler = () => {
@@ -62,7 +58,7 @@ const CarouselManager = (props) => {
 
   const unselectImages = () => {
     images.forEach(image => image.isSelected = false);
-    setSelectedAmount(NO_SELECTED_IMAGES);
+    setSelectedAmount(0);
   }
 
   const actions = (
@@ -70,16 +66,14 @@ const CarouselManager = (props) => {
       <ToggleButton onToggleClick={toggleModeHandler}>
         { isEditMode ? EDIT_MODE : VIEW_MODE }
       </ToggleButton>
-
       <Dropdown items={IMAGES_PER_TIME} onChange={(amount) => setImagesPerTime(amount)}/>
-
       { 
-        isEditMode ?
-          <Button onClick={removeHandler}
-                  isDisabled={selectedAmount === NO_SELECTED_IMAGES}>
+        isEditMode
+          ? <Button onClick={removeHandler}
+                    isDisabled={selectedAmount === 0}>
             { REMOVE }
-          </Button> :
-          null
+          </Button>
+          : null
       }
     </>
   );

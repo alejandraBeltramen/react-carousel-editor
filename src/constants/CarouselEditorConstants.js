@@ -1,4 +1,3 @@
-/* Carousel */
 export const IMAGES_PER_TIME = [ 2, 3, 4, 5 ];
 export const IMAGE_CAPTION_PROPERTY = 'imageCaption';
 export const DEFAULT_IMAGES_PER_TIME = IMAGES_PER_TIME[0];
