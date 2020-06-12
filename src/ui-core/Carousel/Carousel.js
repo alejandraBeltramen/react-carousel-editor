@@ -15,12 +15,22 @@ const Carousel = (props) => {
   prevButtonClass = currentPage !== FIRST_PAGE ? prevButtonClass : `${prevButtonClass} button-disabled`;
   nextButtonClass = currentPage === imagesPerPage.length-1 ? `${nextButtonClass} button-disabled` : nextButtonClass;
 
+  /**
+   * Navigates to first page when a new amount of items to display is set
+   */
   useEffect(() => {
     if(prevItemsToDisplay !== props.itemsToDisplay && currentPage !== FIRST_PAGE) {
       setCurrentPage(FIRST_PAGE);
     }
     setPrevItemsToDisplay(props.itemsToDisplay);
   }, [props.itemsToDisplay]);
+
+  /**
+   * Navigates to first page when images are removed or added
+   */
+  useEffect(() => {
+    setCurrentPage(FIRST_PAGE);
+  }, [props.images.length]);
 
   const pageIndex =  currentPage > imagesPerPage.length-1 ? FIRST_PAGE : currentPage;
   const imagesToRender = imagesPerPage[pageIndex].map((image, index) => {
