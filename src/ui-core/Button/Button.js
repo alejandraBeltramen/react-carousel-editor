@@ -6,7 +6,7 @@ const button = (props) => {
   buttonClases = props.isDisabled ? `${buttonClases} uc-button__disabled` : buttonClases;
 
   return (
-    <button className={buttonClases} onClick={ props.onClick } disabled={props.isDisabled}>
+    <button className={buttonClases} onClick={props.onClick} disabled={props.isDisabled}>
       { props.children }
     </button>
   );

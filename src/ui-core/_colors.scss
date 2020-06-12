@@ -1,6 +1,5 @@
 /* Base Colors */
 // TODO define a color palette here
-
 $main-color:  #3b5e5e;
 
 /* Font colors */
@@ -22,6 +21,8 @@ $button-font-color: $font-color-light;
 $carousel-nav-color-buttons: $font-color-light;
 $carousel-nav-disabled-color-button: $font-color-grey;
 $carousel-background-color: #eff5f5;
+$carousel-dot-background-color: $main-color;
+
 
 /* Card */
 $selected-card-border-color: #004d99;
@@ -34,8 +35,3 @@ $image-viewer-background-color: #eff5f5;
 /* Sections */
 $section-border-color: #666666;
 $section-background-color: #eff5f5;
-
-/* Others */
-// TODO remove them
-$dots-carousel-background-color: #cccccc;
-$dots-carousel-background-color-selected: #444444;
