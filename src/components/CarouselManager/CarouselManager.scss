@@ -1,0 +1,9 @@
+@import '../../ui-core/colors';
+
+.carousel-manager {
+  .cm__carousel {
+    background-color: $carousel-background-color;
+    padding: 30px 80px 30px 80px;
+    border-radius: 2px;
+  }
+}

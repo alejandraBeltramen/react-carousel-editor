@@ -1,0 +1,11 @@
+@import '../../ui-core/colors';
+
+.image-viewer {
+  .iv__content {
+    width: 500px;
+    height: 530px;
+    margin: auto;
+    text-align: center;
+    background-color: $image-viewer-background-color;
+  }
+}

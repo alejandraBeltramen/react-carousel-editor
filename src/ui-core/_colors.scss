@@ -1,0 +1,37 @@
+/* Base Colors */
+// TODO define a color palette here
+$main-color:  #3b5e5e;
+
+/* Font colors */
+$font-color-dark: #222222;
+$font-color-light: #ffffff;
+$font-color-grey: #444444;
+
+/* Dropdown */
+$dropdown-title-font-color: $font-color-dark;
+$dropdown-list-border-color: #e0e0e0;
+$dropdown-list-background-color: #ffffff;
+$dropdown-list-font-color: $font-color-grey;
+
+/* Button */
+$button-background-color: $main-color;
+$button-font-color: $font-color-light;
+
+/* Carousel */
+$carousel-nav-color-buttons: $font-color-light;
+$carousel-nav-disabled-color-button: $font-color-grey;
+$carousel-background-color: #eff5f5;
+$carousel-dot-background-color: $main-color;
+
+
+/* Card */
+$selected-card-border-color: #004d99;
+$label-card-background-color: #ffffff;
+$label-card-font-color: $main-color;
+
+/* Image Viewer */
+$image-viewer-background-color: #eff5f5;
+
+/* Sections */
+$section-border-color: #666666;
+$section-background-color: #eff5f5;

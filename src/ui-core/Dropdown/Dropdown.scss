@@ -1,0 +1,22 @@
+@import '../colors';
+
+.uc-dropdown {
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  width: 100px;
+  margin: 5px;
+
+  .uc-dd-list {
+    height: 34px;
+    border: solid 1px $dropdown-list-border-color;
+    background-color: $dropdown-list-background-color;
+    font-size: 12px;
+    letter-spacing: normal;
+    color: $dropdown-list-font-color;
+    width: 100%;
+    padding-left: 14.3px;
+    cursor: pointer;
+  }
+}
