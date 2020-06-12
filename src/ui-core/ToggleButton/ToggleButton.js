@@ -6,7 +6,7 @@ const toggleButton = (props) => (
     <label className="uc-toggle-title">{ props.children }</label>
     <label className="uc-toggle-label">
       <input onClick={props.onToggleClick} type="checkbox"/>
-      <span className="uc-toggle-label__slider"></span>
+      <span className="uc-toggle-label__slider"/>
     </label>
   </div>
 );

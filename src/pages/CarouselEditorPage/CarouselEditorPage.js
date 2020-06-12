@@ -5,7 +5,7 @@ import ImageSelector from '../../components/ImageSelector/ImageSelector';
 import ImageViewer from '../../components/ImageViewer/ImagerViewer';
 import data from '../../data/carouselImages.json';
 import { CAROUSEL_EDITOR } from '../../localization/english';
-import { IMAGES_PATH } from '../../constants/CarouselEditorConstants';
+import { IMAGES_PATH, DEFAULT_SELECTED_IMAGE_STATE } from '../../constants/CarouselEditorConstants';
 
 const CarouselEditorPage = () => {
   const [ carouselImages, setCarouselImages ] = useState([]);
@@ -20,24 +20,15 @@ const CarouselEditorPage = () => {
     const result = data.carouselImages.map((rawImage) => ({
       ...rawImage,
       imageName: `${IMAGES_PATH}/${rawImage.imageName}`,
-      isSelected: false
+      isSelected: DEFAULT_SELECTED_IMAGE_STATE
     }));
     setSelectorImages(result);
   }, []);
 
-  /**
-   * Sets the clicked image in the Image Viewer
-   * @param {} clickedImage 
-   */
   const carouselImageClickHandler = (clickedImage) => {
     setImageToView(clickedImage);
   };
 
-  /**
-   * 
-   * @param {} removedImages 
-   * @param {} remainingImages 
-   */
   const removeImagesHandler = (removedImages, remainingImages) => {
     resetSelectedState(removedImages);
     setSelectorImages([...selectorImages, ...removedImages]);
@@ -65,7 +56,7 @@ const CarouselEditorPage = () => {
   }
 
   const resetSelectedState = (imagesToReset) => {
-    imagesToReset.forEach((image) => image.isSelected = false);
+    imagesToReset.forEach((image) => image.isSelected = DEFAULT_SELECTED_IMAGE_STATE);
   }
 
   return (

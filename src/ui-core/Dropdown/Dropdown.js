@@ -9,7 +9,7 @@ const dropdown = (props) => {
   return (
     <div className="uc-dropdown">
       <div className="uc-dd__select">
-        <select className="uc-dd-list" onChange={ (event) => props.onChange(event.target.value) }>
+        <select className="uc-dd-list" onChange={(event) => props.onChange(event.target.value)}>
           { renderOption }
         </select>
       </div>
