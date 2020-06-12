@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-carousel-editor/static/css/main.59976db8.chunk.css",
+    "main.js": "/react-carousel-editor/static/js/main.9ed875db.chunk.js",
+    "main.js.map": "/react-carousel-editor/static/js/main.9ed875db.chunk.js.map",
+    "runtime-main.js": "/react-carousel-editor/static/js/runtime-main.dae0d833.js",
+    "runtime-main.js.map": "/react-carousel-editor/static/js/runtime-main.dae0d833.js.map",
+    "static/js/2.9d153be3.chunk.js": "/react-carousel-editor/static/js/2.9d153be3.chunk.js",
+    "static/js/2.9d153be3.chunk.js.map": "/react-carousel-editor/static/js/2.9d153be3.chunk.js.map",
+    "index.html": "/react-carousel-editor/index.html",
+    "precache-manifest.c115742a3346eb4b0be567f9b5e4ec38.js": "/react-carousel-editor/precache-manifest.c115742a3346eb4b0be567f9b5e4ec38.js",
+    "service-worker.js": "/react-carousel-editor/service-worker.js",
+    "static/css/main.59976db8.chunk.css.map": "/react-carousel-editor/static/css/main.59976db8.chunk.css.map",
+    "static/js/2.9d153be3.chunk.js.LICENSE.txt": "/react-carousel-editor/static/js/2.9d153be3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dae0d833.js",
+    "static/js/2.9d153be3.chunk.js",
+    "static/css/main.59976db8.chunk.css",
+    "static/js/main.9ed875db.chunk.js"
+  ]
+}
